@@ -1,0 +1,42 @@
+
+Multicast
+
+     Multicast is To transmit a single message to a select group of recipients. here multicast used by tomcat cluster to identify the instances those part of cluster. 
+
+There is 2 types of cluster
+Static Tomcat Cluster
+Dynamic Tomcat Cluster
+In static cluster there is no need multicast, because each tomcat we statically defined/configured the other instances. But dynamic Cluster we are not defined anything. so each tomcat in that cluster some how to identify the other tomcat instances.
+
+so here multicast concepts is used. each and every tomcat first joining to single multicast group. and send the heartbeat signals in periodic interval. so other tomcat instances received these signal and add the member to the cluster.
+
+Session Manager in Tomcat
+
+      Session Manager is used to create and manage the session behalf the application. In Servlet Specification request.getSession(); line is mention that container (tomcat) is responsible for create the session. here tomcat use the Session Manager for this purpose.
+
+there is 4 types of Session Manager
+Standard Manager
+Persistent Manager
+Delta Manager
+Backup Manager
+Standard Manager
+Its is the default manager used by tomcat. Even though we are not mention in our web application tomcat use this manager for managing our session. If u want to customize the this standard manager then add <Manager> tag in context.xml file.
+
+<Manager className=“org.apache.catalina.session.StandardManager” />
+
+here org.apache.catalina.session.StandardManager is fully qualified class name of the Standard Manager.
+
+Persistent Manger
+This mnager is to sote the session information into persistent place after some interval. here two types of store is available.
+File Store
+JDBC Store
+File Store helps to store all session information in separate files in underlying file system (local HDD or shared file-system like NFS,..) 
+JDBC Store helps to store the session information to relational database.
+
+so using the Persistent Manager we can achieve the tomcat cluster. but its not swapped out in real time. its pushes the information after certain interval. so if anything badly happen(crash) before that interval then in-memory session data is gone.
+
+Delta Manger
+In this post we are going to use this manager. Its replicate the session to all other instances. so this manager usually used clustered environment. but not good for large cluster.
+
+Backup Manager
+this manager usually used clustered environment. Its like delta manger. but it will  replicate to exactly one other instance(backup instance). Its acted like one instance is Primary  and another instance as backup  
