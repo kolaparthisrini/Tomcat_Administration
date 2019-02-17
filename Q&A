@@ -1,0 +1,12 @@
+
+How Load balancer knows when one tomcat instance is failed or tomcat is just recovered from failed state?
+Sol)
+Ans : when one tomcat instance is failed, load balancer don't know about that instances is failed. so its try to forward the request
+to all tomcat instances. If load balancer try to forward the request to failed tomcat instance, its will not respond. 
+so load balancer understand and marked the state as a failed and forward the same request to another tomcat instances. 
+so client perspective we not feel one tomcat instances are failed. 
+
+when tomcat instances recovered from failed state. that time also load balancer don't know that tomcat is ready for processing. 
+Its still marked the state is failed. In periodic interval load balancer checks the health status of all tomcat instances.
+(by default 60 sec). after checking health status then only load balancer came to know that tomcat instance is ready. and its
+update the status is OK
