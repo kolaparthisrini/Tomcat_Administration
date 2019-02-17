@@ -1,0 +1,11 @@
+
+https://www.apache.org/dist/tomcat/tomcat-connectors/jk/binaries/windows/
+
+Install latest stable Apache:
+================================
+http://www.apachehaus.com/cgi-bin/download.plx
+
+
+mod_jk module:
+==============
+http://archive.apache.org/dist/tomcat/tomcat-connectors/jk/binaries/windows/
