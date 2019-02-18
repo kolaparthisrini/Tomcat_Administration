@@ -1,0 +1,378 @@
+Apache Tomcat
+-------------
+Installation
+Configuration(Nodes)
+Deployments 
+Configuration files
+Data source configurations
+Clustering Configuration
+------
+Tomcat 8.5
+apache http server---apache24
+mysql connector
+mod utility
+Eclipse/Sts
+Notepad++
+tomcat on docker(optional).
+---------------------------
+HTTP protocol:
+1.0/1.1/2.x
+
+FTP==for transfering file
+
+.....etc
+
+web app will reside in web/app server.
+*Http is stateless protocol.
+
+to access an app which exsists inserver,we aare using Browsers(User agent)
+Http==which is insecure
+Https=which is secure
+https=Http+SSl
+
+Http===>Headers(request and response cycle)
+Https=>will need to bind security/digital certificates to sever.
+
+Certificates:2 types of cert.
+1)Commercial certificate(in prod)
+vendor issued certificates Ex:verisgn,godaddy,paypal..
+
+2)Self signed certificate(are created on our own)
+
+self signed cert are used for local testing.
+In prod,we shld not use self.
+tool:keytool
+
+https://www.sslshopper.com/
+
+
+cipher/private/public/digital cert/algo/vault...etc
+
+Apache Tomcat Web server:
+
+Http Engine+Catalina+Jasper+Middleware Services(tx management,lifecycle management,datasources,jndi sources...)
+
+nearly 16+ middleware services.
+
+Catalina is servlet container.
+
+Jasper is jsp container
+Http Engine is a component which will process ur http requests.
+
+Example for Web servers:tomcat,resign,nginx,jetty....etc
+
+App server:
+
+Http engine+Catalina+Jasper+Middleware services+EJb container+Messaging/MQ Container
+
+Web--2
+App--4
+
+Example:  Weblogic/websphere/glassfish/IBM.....etc
+
+
+Apache tomcat server:
+Apache is http server
+tomcat is container component(catalina and jasper)
+
+
+Monitoring Tools:
+
+Jstat/JvisualVM/Jconsole/Appdynamics.....etc
+
+Jvisulavm:Any app or S/w which uses JDK can be monitored
+using Jvisual VM.
+
+JMX Beans
+
+If u want to take dumps or profile any thing,then java uses
+instrumentation feature.
+
+Load testing:Jmeter.....
+----------------------------------------
+
+To inspect/view the http traffic ,simply inspect the 
+networking section of web page on browser.
+
+Tomcat 8.5:
+
+Protocols: Http/https and AJP protoc0l.
+
+Http:2.x
+AJP:1.3
+AJP? 
+1)Ajp is used for communication b/w Apache httpd server
+and tomcat containers.
+2)To communicate with containers and to perform loaad balancing,AJP is must.
+
+conf:this is the place for entire tomcat metadata configuration.
+
+lib is place for libraries(3rd party lib)
+
+logs:By default tomcat uses "juli"
+and java.util.Logging to enable logging on the servers.
+
+Webapps--is a place where u r going to deploy or place ur war files.
+
+bin--is a location from where we can
+control or config the server and security parts of the server.
+
+
+Default Http Port no is 8080/80
+
+HTTPS port no is 8443/443
+
+--------------------
+
+Conf:
+
+catalina.policy==used for creating and modifying security polices  on tomcat
+Realm
+
+grant
+
+
+Context.xml:USed for connection pooling config and jndi config shlb config under <context>.
+
+
+Logging.properties:log config
+
+Default log encoding tech:UTF8
+
+
+Unicode:UTF16
+
+
+Main comp of tomcat server.xml:
+
+-->Load balancing
+Node config
+Routing
+Http connector config
+Https connector config
+cluster config
+Virtualhost config..etc
+
+How to resolve port conflicts for tomcat?
+
+Edit Connector tag under server.x
+ml.
+
+---------
+Shutdownport=8006
+Http portno =8888
+Https Portno=8443
+AJP version=1.3
+AJP Port no=8009
+Hostname=localhost
+
+
+-------------------
+
+tomcat-users is a location where
+we are going to config cerdentials for a user and permissions. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
